@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>ApiTest</h2>
+<div id="app">
+    <div class="container">
+        <div class="py-2">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="" class="">ApiData : </label>
+                <input type="text" v-model="apiData" class="form-control" id="">
+            </div>
+            <button type="button" class="btn btn-success" @@click="callApi">sumit</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/vue.js"></script>
+<script>
+
+    var SetPrinterVue = new Vue({
+        el: "#app",//範圍宣告
+        data: {
+            apiData: "",
+        },
+        //created() {
+
+        //},
+        methods: {
+            callApi: function () {
+                $.get("/Api/call_me/?Data=" + this.apiData, function (result) {
+                    alert('共輸入了' + result + '個字');
+                    //if (result == null) {
+                    //    return;
+                    //}
+                    //else {
+                    //    itemsList = result;
+                    //    localStorage.setItem("itemsList", result);
+                    //    this.items = JSON.parse(itemsList);
+                    //    console.log(" this.items :" + this.items);
+                    //}
+                });
+
+            },
+        },
+    })
+
+</script>
+
